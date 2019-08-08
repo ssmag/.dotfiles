@@ -41,7 +41,7 @@ URxvt.iso14755: false
 URxvt.iso14755_52: false
 
 !! Extensions
-URxvt.perl-lib: ~/.urxvt/ext
+URxvt.perl-lib: /usr/lib/x86_64-linux-gnu/urxvt/perl
 URxvt.perl-ext-common:	fullscreen,default,matcher,resize-font,url-select,keyboard-select, clipboard
 URxvt.colorUL:		#4682B4
 !! url-select
