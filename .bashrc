@@ -1,11 +1,10 @@
 # Welcome message
-
-
-neofetch
-# Start tmux
-
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-	exec tmux
+if [[ ! "$TERM" =~ "xterm-256color" ]]; then
+ 	neofetch
+ 	# Start tmux
+ 	if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+ 		exec tmux
+ 	fi
 fi
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
@@ -50,6 +49,9 @@ case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
+# Set urxvt to fullscreen
+wmctrl -r x-terminal-emulator -b add,fullscreen
+
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
@@ -67,16 +69,20 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+   
+	#No color
+	PS1='${debian_chroot:+($debian_chroot)}\u@\t \W \$'
+	#Overlapping color
+	#PS1='${debian_chroot:+($debian_chroot)}\e\[[1;32m[\u@\t \W] \$\e\[\]\]'
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\W\$ '
 fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\d \u@\h: \w\a\]$PS1"
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\d \u@\h: \W\a\]$PS1"
     ;;
 *)
     ;;
@@ -114,8 +120,24 @@ fi
 
 # set JAVA_HOME environment variable
 
-export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64/jre
 
+export JAVA_HOME=/usr/lib/jvm/jdk-11.0.4/
+export ANDROID_NDK=~/Android/Sdk/ndk/20.1.5948944/
+export ANDROID_SDK=~/Android/Sdk/build-tools/29.0.2/
+export DISCORD_PATH=~/programs/Discord/
+export CARGO_PATH=/home/th0r/.cargo/bin
+# JRE_HOME IS INCORRECT. GOTTA FIND RIGHT PATH AGAIN
+# export JRE_HOME=/usr/share/gdb/auto-load/usr/lib/jvm/java-12-openjdk-amd64/jre
+# PATH = $PATH:$HOME/bin:$JAVA_HOME/bin:$DISCORD_PATH
+PATH=$PATH:$CARGO_PATH
+PATH=$PATH:$HOME/bin:$DISCORD_PATH
+
+export PATH
+export bin=/usr/local/bin
+
+# Set detault editor
+
+export EDITOR=vi
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 #alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -173,3 +195,17 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# This sets up urxvt
+loadXdefaults
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_OPS="--extended"
+
+# dotnet stuff
+export DOTNET_ROOT=$HOME/dotnet
+export PATH=$PATH:$DOTNET_ROOT

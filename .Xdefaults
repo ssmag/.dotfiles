@@ -42,26 +42,46 @@ URxvt.iso14755_52: false
 
 !! Extensions
 URxvt.perl-lib: /usr/lib/x86_64-linux-gnu/urxvt/perl
-URxvt.perl-ext-common:	fullscreen,default,matcher,resize-font,url-select,keyboard-select, clipboard
+URxvt.perl-ext-common: default,matcher,resize-font,keyboard-select,clipboard-osc,clipboard,fullscreen
 URxvt.colorUL:		#4682B4
-!! url-select
-URxvt.keysym.M-u:	perl:url-select:select_next
-URxvt.url-select.launcher: linkhandler
-URxvt.url-select.underline: true
 !! clipboard copy
 URxvt.clipboard.autocopy: true
 URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+!! clipboard past taken from script
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
 !! keyboard-select:
+URxvt.keyboard-select.clipboard: true
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 !! resize-font
-URxvt.resize-font.smaller:	C-Down
-URxvt.resize-font.bigger:	C-Up
+URxvt.resize-font.smaller:	C-j
+URxvt.resize-font.bigger:	C-k
 !! Matcher
-URxvt.url-launcher:	linkhandler
-URxvt.matcher.button:	1
+! URxvt.url-launcher:	linkhandler
 !! Fullscreen switch
 URxvt.keysym.F11:	perl:fullscreen:switch
+
+!! key bindings
+URxvt.matcher.button:     1
+URxvt.keysym.C-Delete:    matcher:last
+URxvt.keysym.M-Delete:    matcher:list
+URxvt.keysym.M-Insert:	  matcher:select
+!! regexps
+!! *.0 for web links 
+URxvt.matcher.pattern.0: (https?|ftp):\/\/(\\w[\\w-]+\\.)+\\S+
+! URxvt.matcher.pattern.0: (?:\\s)([\\~\\.]?\\/\{1,1\}[\\.\\w]\\S+)\\b
+! URxvt.matcher.pattern.0: \\B(/\\S+?):(\\d+)(?=:|$)               ! gcc and all 
+
+
+!! launchers . Need all 0..x defined  
+URxvt.matcher.launcher.0: xdg-open 
+URxvt.matcher.launcher.1: gvim +$2 $1
+URxvt.matcher.launcher.2: emacsclient $1
+URxvt.urlLauncher:          xdg-open
+URxvt.url-select.launcher: xdg-open
+URxvt.keysym.M-m:			perl:url-select:select_next
+!! change the font highlight style
+!! I could not configure this nicely Yet 
+URxvt.matcher.rend.2:          Uline fg01
 
 rofi.color-enabled:	true
 rofi.color-window:	#000, #000, #000
