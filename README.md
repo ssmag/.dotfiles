@@ -1,3 +1,8 @@
 # README
 
-Dot files for urxvt
+Dot files for:
+
+- bash
+- git
+- vim
+- urxvt
