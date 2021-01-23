@@ -1,0 +1,7 @@
+[user]
+	name = Spyros Magliveras
+	email = ssmag@github.com
+	username = ssmag
+[core]
+	editor = vim
+	whitespace = fix, -indent-with-non-tab, trailing-space, cr-at-eol
