@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd $TOYOTA_HOME
+./gradlew assembleLexusOneProdDebug --info && \
+adb install -r app/build/outputs/lexusOneProd/debug/app-lexisOne-prod-debug.apk

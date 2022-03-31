@@ -1,0 +1,4 @@
+#!/bin/bash
+cd ~/Documents/hugcerts
+grpcui -cacert cacert.pem -key key.pem -cert cert.pem -reflect-header 'x-ctp-hucom-vcm: (T; AA111111111111111; 111111111111111; US)' vehicle-registration-service.preprod.connectedtech.io:443
+cd -

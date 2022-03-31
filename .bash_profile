@@ -10,6 +10,7 @@ fi
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
+source ~/.bashrc
 
 # If not running interactively, don't do anything
 case $- in
@@ -123,24 +124,18 @@ fi
 # set JAVA_HOME environment variable
 
 
-# TODO CHECK OS INSTALLATION AND ASSIGN JAVA_HOME ACCORDINGLY
-# JAVA HOME ON UBUNTU
-# export JAVA_HOME=/usr/lib/jvm/jdk-11.0.4/
-
-# JAVA HOME ON MACOS
-
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+export JAVA_HOME=/usr/lib/jvm/jdk-11.0.4/
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
 export ANDROID_NDK=~/Android/Sdk/ndk/20.1.5948944/
 export ANDROID_SDK=~/Android/Sdk/build-tools/29.0.2/
 export DISCORD_PATH=~/programs/Discord/
 export CARGO_PATH=/home/th0r/.cargo/bin
-export FLUTTER_PATH=/Users/spyrosmagliveras/development/flutter/bin
+export TOYOTA_HOME=~/AndroidStudioProjects/oneapp-toyota-android/Toyota_bkc1
 # JRE_HOME IS INCORRECT. GOTTA FIND RIGHT PATH AGAIN
 # export JRE_HOME=/usr/share/gdb/auto-load/usr/lib/jvm/java-12-openjdk-amd64/jre
 # PATH = $PATH:$HOME/bin:$JAVA_HOME/bin:$DISCORD_PATH
 PATH=$PATH:$CARGO_PATH
 PATH=$PATH:$HOME/bin:$DISCORD_PATH
-PATH=$PATH:$FLUTTER_PATH
 
 export PATH
 export bin=/usr/local/bin
@@ -219,3 +214,4 @@ export FZF_DEFAULT_OPS="--extended"
 # dotnet stuff
 export DOTNET_ROOT=$HOME/dotnet
 export PATH=$PATH:$DOTNET_ROOT
+

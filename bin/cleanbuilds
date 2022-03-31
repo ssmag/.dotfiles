@@ -1,0 +1,20 @@
+#!/bin/bash
+
+rm -rf .gradle
+rm -rf app/build
+rm -rf build
+rm -rf commonlib/build
+rm -rf cosmocalendar/build
+rm -rf flex/build
+rm -rf network/build
+rm -rf wearapp/build
+rm -rf one_ui/build
+rm -rf xcapp/build
+rm -rf RemoteParkControlLib/build
+rm -rf app/toyotaOneProd/*
+rm -rf app/toyotaOneStage/*
+rm -rf app/toyotaOneQa/*
+rm -rf app/lexusOneProd/*
+rm -rf app/lexusOneStage/*
+rm -rf app/lexusOneQa/*
+

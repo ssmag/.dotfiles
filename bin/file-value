@@ -1,0 +1,4 @@
+#!/bin/bash
+
+expr $(echo $(($(git diff $1 | grep ^+ | wc -l))) - $(($(git diff $1 | grep ^- | wc -l))))
+

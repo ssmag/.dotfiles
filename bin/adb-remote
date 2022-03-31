@@ -1,0 +1,11 @@
+#!/bin/bash
+
+port=5555
+port=$1
+
+adb forward tcp:$port tcp:$port
+sleep 1
+adb tcpip $port
+sleep 1
+adb connect 10.0.0.56:$port
+

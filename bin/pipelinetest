@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd $TOYOTA_HOME
+cleanbuilds
+./gradlew clean && \
+./gradlew assembleLexusOneProdDebug && \
+./gradlew --stacktrace --console=plain :app:testLexusOneStageDebugUnitTest :xcapp:testLexusOneStageDebugUnitTest && \
+./gradlew assembleToyotaOneProdDebug && \
+./gradlew --stacktrace --console=plain :app:testToyotaOneStageDebugUnitTest :xcapp:testToyotaOneStageDebugUnitTest
