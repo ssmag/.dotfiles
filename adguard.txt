@@ -1,0 +1,2 @@
+! This is the comment. Below this line, there is an actual filtering rule.
+||https://www.youtube.com/shorts^
