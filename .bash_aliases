@@ -5,11 +5,10 @@ alias cls="clear"
 alias conda="~/anaconda3/condabin/conda"
 alias cpuinfo='cat /proc/cpuinfo'
 alias eclipse="~/eclipse/java-2018-12/eclipse/eclipse"
-alias gotorxjava="cd ~/Documents/progs/RxJava"
 alias jupyter-notebook="~/anaconda3/bin/jupyter-notebook"
+alias ls="ls -FHG"
 alias lash="ls -lash"
 alias loadXdefaults="xrdb -load ~/.Xdefaults"
-alias ls="ls -1 --color=auto"
 alias lsa="ls -a"
 alias mysqlroot="sudo mysql -u root"
 alias networkinfo="cd /etc/NetworkManager/system-connections/; ll; cd -"
@@ -28,9 +27,28 @@ alias sublime='/snap/current/sublime_text'
 alias systemsuspend="systemctl suspend"
 alias ts3client="~/packages/TeamSpeak3-Client-linux_amd64/ts3client_runscript.sh"
 alias vim="vi"
+alias gitprev="git checkout @{-1}"
+alias killemulator="adb devices | grep emulator | cut -f1 | while read line; do adb -s $line emu kill; done"
+alias javaln="sudo ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-17.jdk"
+alias tmux="tmux -S 1"
+alias talkbackoff="adb shell settings put secure enabled_accessibility_services com.android.talkback/com.google.android.marvin.talkback.TalkBackService"
+alias talkbackon="adb shell settings put secure enabled_accessibility_services com.google.android.marvin.talkback/com.google.android.marvin.talkback.TalkBackService"
+alias deeplink-test="adb shell am start -W -a android.intent.action.VIEW -d https://www.amcplus.com/shows/talking-dead--1002245"
+
+# ADB SCREEN RECORDING COMMANDS
+
+alias screenrecord="adb shell screenrecord /sdcard/example.mp4"
+alias screenrecordpull="adb pull /sdcard/example.mp4"
+alias screenrecorddel="adb shell rm /sdcard/example.mp4"
+alias screenshot="adb exec-out screencap -p > screen.png"
+alias amazoncontrolpanel="adb shell am start com.amazon.ssm/com.amazon.ssm.ControlPanel"
+alias showlayoutbounds="adb shell setprop debug.layout true"
+alias hidelayoutbounds="adb shell setprop debug.layout false"
+alias remove-proxy="db shell settings put global http_proxy :0"
 # alias clspackagecache="sudo rm /var/lib/apt/lists/*"
+
 # Git aliases
 
-# alias lg1="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
-# alias lg2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
+alias lg1="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+alias lg2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
 # alias lg=!"git lg1"

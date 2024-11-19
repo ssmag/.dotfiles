@@ -7,6 +7,8 @@ if [[ ! "$TERM" =~ "xterm-256color" ]]; then
  	fi
 fi
 
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -26,8 +28,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=3000
+HISTFILESIZE=5000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -121,20 +123,38 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# API Secrets
+# In order to maintain this file safe to transfer across the internet, we are hiding sensitive information inside a file
+if [ -f ~/.bash_env_secrets ]; then
+	. ~/.bash_env_secrets
+fi
+
 # set JAVA_HOME environment variable
+# JAVA 17
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home
+# 
+# JAVA 11
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.15.1.jdk/Contents/Home
 
+# JAVA 8?
+#export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+# PATH = $PATH:$HOME/bin:$JAVA_HOME/bin:$DISCORD_PATH
+# JAVA 8
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_291.jdk/Contents/Home
 
-export JAVA_HOME=/usr/lib/jvm/jdk-11.0.4/
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
 export ANDROID_NDK=~/Android/Sdk/ndk/20.1.5948944/
 export ANDROID_SDK=~/Android/Sdk/build-tools/29.0.2/
 export DISCORD_PATH=~/programs/Discord/
 export CARGO_PATH=/home/th0r/.cargo/bin
-export TOYOTA_HOME=~/AndroidStudioProjects/oneapp-toyota-android/Toyota_bkc1
+export ADB_PATH=/Users/Spyros.Magliveras/Library/Android/sdk/platform-tools
+export ANDROID_HOME=~/Library/Android/sdk
+export ANDROID_SDK_ROOT=~/Library/Android/sdk
+
 # JRE_HOME IS INCORRECT. GOTTA FIND RIGHT PATH AGAIN
 # export JRE_HOME=/usr/share/gdb/auto-load/usr/lib/jvm/java-12-openjdk-amd64/jre
 # PATH = $PATH:$HOME/bin:$JAVA_HOME/bin:$DISCORD_PATH
 PATH=$PATH:$CARGO_PATH
+PATH=$PATH:$ADB_PATH
 PATH=$PATH:$HOME/bin:$DISCORD_PATH
 
 export PATH
@@ -206,12 +226,41 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # This sets up urxvt
-loadXdefaults
+if [[ $(uname) =~ "xterm-256color" ]]; then
+	loadXdefaults
+fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_OPS="--extended"
+
+# 
+#
+
+export LOCAL_PYTHON_PATH="/Users/Spyros.Magliveras/.local/bin"
+export PATH=$PATH:$LOCAL_PYTHON_PATH
+
+export PYTHON_VENV_PATH="/Users/Spyros.Magliveras/.local/pythonvenv/bin/activate"
+export PATH=$PATH:$PYTHON_VENV_PATH
 
 # dotnet stuff
 export DOTNET_ROOT=$HOME/dotnet
 export PATH=$PATH:$DOTNET_ROOT
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+
+#### FZF UDPATE BS
+#
+#To set up shell integration, add this to your shell configuration file:
+#   # bash
+#   eval "$(fzf --bash)"
+# 
+#   # zsh
+#   source <(fzf --zsh)
+# 
+#   # fish
+#   fzf --fish | source
+# 
+# To use fzf in Vim, add the following line to your .vimrc:
+#   set rtp+=/opt/homebrew/opt/fzf

@@ -74,3 +74,7 @@ let g:gitgutter_sign_modified = '>'
 let g:gitgutter_sign_removed = '--'
 let g:gitgutter_sign_removed_above_and_below = '^_'
 let g:git_gutter_sign_modified_removed = '>-'
+
+" Fzf integration
+set rtp+=/opt/homebrew/opt/fzf
+

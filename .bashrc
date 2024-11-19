@@ -1,10 +1,12 @@
 # Welcome message
 if [[ ! "$TERM" =~ "xterm-256color" ]]; then
- 	neofetch
+	echo
  	# Start tmux
- 	if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
- 		exec tmux
- 	fi
+# 	if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#		echo "TMUX RUNNING"
+#	else
+#		echo "TMUX NOT RUNNING"
+# 	fi
 fi
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
@@ -25,8 +27,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000
+HISTFILESIZE=20000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -101,6 +103,10 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+# TODO: FIND OUT WHY THE FUCK THIS DOES NOT WORK
+# init thefuck
+# eval "$(thefuck --alias)"
+# eval "$(thefuck --alias fuck)"
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
@@ -125,22 +131,31 @@ fi
 
 # TODO CHECK OS INSTALLATION AND ASSIGN JAVA_HOME ACCORDINGLY
 # JAVA HOME ON UBUNTU
-# export JAVA_HOME=/usr/lib/jvm/jdk-11.0.4/
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.15.1.jdk/Contents/Home
 
 # JAVA HOME ON MACOS
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home
+#export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+
 export ANDROID_NDK=~/Android/Sdk/ndk/20.1.5948944/
 export ANDROID_SDK=~/Android/Sdk/build-tools/29.0.2/
 export DISCORD_PATH=~/programs/Discord/
 export CARGO_PATH=/home/th0r/.cargo/bin
 export FLUTTER_PATH=/Users/spyrosmagliveras/development/flutter/bin
+export SNYK_PATH=/Users/Spyros.Magliveras/Snyk
+export BUILD_TOOLS_PATH=~/Library/Android/sdk/build-tools/34.0.0
+export DOTNET_ROOT=$HOME/dotnet
+
 # JRE_HOME IS INCORRECT. GOTTA FIND RIGHT PATH AGAIN
 # export JRE_HOME=/usr/share/gdb/auto-load/usr/lib/jvm/java-12-openjdk-amd64/jre
 # PATH = $PATH:$HOME/bin:$JAVA_HOME/bin:$DISCORD_PATH
 PATH=$PATH:$CARGO_PATH
 PATH=$PATH:$HOME/bin:$DISCORD_PATH
 PATH=$PATH:$FLUTTER_PATH
+PATH=$PATH:$SNYK_PATH
+PATH=$PATH:$BUILD_TOOLS_PATH
+PATH=$PATH:$DOTNET_ROOT
 
 export PATH
 export bin=/usr/local/bin
@@ -211,11 +226,19 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # This sets up urxvt
-loadXdefaults
+if [[ ! $(uname) =~ "Darwin" ]]; then
+	loadXdefaults
+fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.fzf.bash ] && eval "$(fzf --bash)" && source ~/.fzf.bash
 export FZF_DEFAULT_OPS="--extended"
 
-# dotnet stuff
-export DOTNET_ROOT=$HOME/dotnet
-export PATH=$PATH:$DOTNET_ROOT
+export GOOGLE_APPLICATION_CREDENTIALS=/Users/Spyros.Magliveras/Documents/google-app-amc-plus-dev-credentials.json
+
+# TO BE CHANGED
+#export DEVICE_NAME="AMC-MC5G7504RF6"
+
+# JFROG STUFF
+export JFROG_USERNAMECIRCL="circlecitest"
+export FIRETV_SERIALNO=G071R20721730GGD
+export ANDROIDTV_SERIALNO=24211HFDD666B7
