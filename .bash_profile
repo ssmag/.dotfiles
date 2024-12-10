@@ -146,7 +146,7 @@ export ANDROID_NDK=~/Android/Sdk/ndk/20.1.5948944/
 export ANDROID_SDK=~/Android/Sdk/build-tools/29.0.2/
 export DISCORD_PATH=~/programs/Discord/
 export CARGO_PATH=/home/th0r/.cargo/bin
-export ADB_PATH=/Users/Spyros.Magliveras/Library/Android/sdk/platform-tools
+export ADB_PATH=~/Library/Android/sdk/platform-tools
 export ANDROID_HOME=~/Library/Android/sdk
 export ANDROID_SDK_ROOT=~/Library/Android/sdk
 
@@ -236,10 +236,10 @@ export FZF_DEFAULT_OPS="--extended"
 # 
 #
 
-export LOCAL_PYTHON_PATH="/Users/Spyros.Magliveras/.local/bin"
+export LOCAL_PYTHON_PATH="~/.local/bin"
 export PATH=$PATH:$LOCAL_PYTHON_PATH
 
-export PYTHON_VENV_PATH="/Users/Spyros.Magliveras/.local/pythonvenv/bin/activate"
+export PYTHON_VENV_PATH="~/.local/pythonvenv/bin/activate"
 export PATH=$PATH:$PYTHON_VENV_PATH
 
 # dotnet stuff

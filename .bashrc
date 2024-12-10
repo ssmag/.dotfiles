@@ -142,8 +142,8 @@ export ANDROID_NDK=~/Android/Sdk/ndk/20.1.5948944/
 export ANDROID_SDK=~/Android/Sdk/build-tools/29.0.2/
 export DISCORD_PATH=~/programs/Discord/
 export CARGO_PATH=/home/th0r/.cargo/bin
-export FLUTTER_PATH=/Users/spyrosmagliveras/development/flutter/bin
-export SNYK_PATH=/Users/Spyros.Magliveras/Snyk
+export FLUTTER_PATH=~/development/flutter/bin
+export SNYK_PATH=~/Snyk
 export BUILD_TOOLS_PATH=~/Library/Android/sdk/build-tools/34.0.0
 export DOTNET_ROOT=$HOME/dotnet
 
@@ -233,7 +233,7 @@ fi
 [ -f ~/.fzf.bash ] && eval "$(fzf --bash)" && source ~/.fzf.bash
 export FZF_DEFAULT_OPS="--extended"
 
-export GOOGLE_APPLICATION_CREDENTIALS=/Users/Spyros.Magliveras/Documents/google-app-amc-plus-dev-credentials.json
+export GOOGLE_APPLICATION_CREDENTIALS=~/Documents/google-app-amc-plus-dev-credentials.json
 
 # TO BE CHANGED
 #export DEVICE_NAME="AMC-MC5G7504RF6"
