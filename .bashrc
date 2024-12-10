@@ -141,16 +141,17 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home
 export ANDROID_NDK=~/Android/Sdk/ndk/20.1.5948944/
 export ANDROID_SDK=~/Android/Sdk/build-tools/29.0.2/
 export DISCORD_PATH=~/programs/Discord/
-export CARGO_PATH=/home/th0r/.cargo/bin
 export FLUTTER_PATH=~/development/flutter/bin
 export SNYK_PATH=~/Snyk
 export BUILD_TOOLS_PATH=~/Library/Android/sdk/build-tools/34.0.0
 export DOTNET_ROOT=$HOME/dotnet
+# TODO: Change CARGO_PATH TO NOT SHOW EXPLICIT HOME DIRECTORY
+# export CARGO_PATH=/home/th0r/.cargo/bin
 
 # JRE_HOME IS INCORRECT. GOTTA FIND RIGHT PATH AGAIN
 # export JRE_HOME=/usr/share/gdb/auto-load/usr/lib/jvm/java-12-openjdk-amd64/jre
 # PATH = $PATH:$HOME/bin:$JAVA_HOME/bin:$DISCORD_PATH
-PATH=$PATH:$CARGO_PATH
+# PATH=$PATH:$CARGO_PATH
 PATH=$PATH:$HOME/bin:$DISCORD_PATH
 PATH=$PATH:$FLUTTER_PATH
 PATH=$PATH:$SNYK_PATH
@@ -205,19 +206,20 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# TODO: Change anaconda setup to not represent any actual home directory
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/th0r/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/th0r/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/th0r/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/th0r/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+# __conda_setup="$('/home/th0r/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/home/th0r/anaconda3/etc/profile.d/conda.sh" ]; then
+#         . "/home/th0r/anaconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/home/th0r/anaconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
 # <<< conda initialize <<<
 
 
