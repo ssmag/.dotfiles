@@ -1,21 +1,22 @@
 " execute pathogen#infect()
 syntax on
 filetype plugin indent on
-set number
-" Override go-to.definition key shortcut to Ctrl-]
-let g:pymode_rope_goto_definition_bind = "<C-]>"
 
-" Override run current python file key shortcut to Ctrl-Shift-e
-let g:pymode_run_bind = "<C-S-e>"
-
-" Override view python doc key shortcut to Ctrl-Shift-d
-let g:pymode_doc_bind = "<C-S-d>"
-
-" Enable python3 syntax
-let g:pymode_python = 'python3'
-
-" Run python code with Ctrl-Shift-r
-let g:pymode_run_bind = "<C-S-r>"
+"""" PYTHON BS WE DONT NEED
+""""""" Override go-to.definition key shortcut to Ctrl-]
+""""""let g:pymode_rope_goto_definition_bind = "<C-]>"
+""""""
+""""""" Override run current python file key shortcut to Ctrl-Shift-e
+""""""let g:pymode_run_bind = "<C-S-e>"
+""""""
+""""""" Override view python doc key shortcut to Ctrl-Shift-d
+""""""let g:pymode_doc_bind = "<C-S-d>"
+""""""
+""""""" Enable python3 syntax
+""""""let g:pymode_python = 'python3'
+""""""
+""""""" Run python code with Ctrl-Shift-r
+""""""let g:pymode_run_bind = "<C-S-r>"
 
 " Enabling relative numbering
 set number
@@ -32,7 +33,6 @@ set shiftwidth=0
 set tabstop=4
 
 " Set Shift-Enter to create new line
-
 nmap <S-Enter> O<Esc>j
 nmap <CR o<Esc>k
 
@@ -75,6 +75,14 @@ let g:gitgutter_sign_removed = '--'
 let g:gitgutter_sign_removed_above_and_below = '^_'
 let g:git_gutter_sign_modified_removed = '>-'
 
+autocmd FilterWritePre * if &diff | setlocal nospell | nnoremap <buffer> [s :diffget 1<CR> | nnoremap <buffer> ]s :diffget 3<CR> | nnoremap <buffer> ]a :diffget 2<CR> | endif
+
 " Fzf integration
 set rtp+=/opt/homebrew/opt/fzf
 
+""" AUTO-RELOAD FILES
+
+" Reload files when changed externally
+set autoread
+au CursorHold,CursorHoldI * checktime
+au FocusGained,BufEnter * checktime
