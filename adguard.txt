@@ -1,12 +1,13 @@
 ! Title: Short-form content blocklist
-! Description: Blocks short-form video feeds (YouTube Shorts, Instagram/Facebook
-!   Reels, TikTok, Snapchat Spotlight, etc.) while leaving the rest of each site usable.
+! Description: Blocks YouTube Shorts and Instagram Reels while leaving the rest
+!   of YouTube and Instagram usable.
 !
 ! Usage: AdGuard (browser extension / desktop app) -> Settings -> User rules
 !   -> paste this file, or host it and add its raw URL as a custom filter.
-! Note: AdGuard Home / AdGuard DNS only understand the domain-wide rules
-!   (the "Dedicated short-form apps" section). Path rules ($document) and
-!   cosmetic rules (##) need the browser extension or desktop app.
+! Note: Path rules ($document) and cosmetic rules (##) need the AdGuard
+!   browser extension or desktop app. AdGuard Home / AdGuard DNS cannot block
+!   part of a site, and these rules do not affect the YouTube/Instagram apps.
+! Comments must be on their own line; a "!" after a rule breaks that rule.
 
 ! ---------------------------------------------------------------------------
 ! YouTube Shorts
@@ -44,29 +45,3 @@ m.youtube.com##ytm-video-with-context-renderer:has(a[href^="/shorts/"])
 ||instagram.com/explore/$document
 instagram.com##a[href="/reels/"]
 instagram.com##a[href="/explore/"]
-
-! ---------------------------------------------------------------------------
-! Facebook Reels
-! ---------------------------------------------------------------------------
-||facebook.com/reel/$document
-||facebook.com/reels/$document
-||facebook.com/watch/$document
-facebook.com##a[href*="/reel/"]
-facebook.com##div[aria-label="Reels"]
-
-! ---------------------------------------------------------------------------
-! Snapchat Spotlight
-! ---------------------------------------------------------------------------
-||snapchat.com/spotlight$document
-
-! ---------------------------------------------------------------------------
-! Dedicated short-form apps (whole domain; also works in AdGuard Home/DNS)
-! ---------------------------------------------------------------------------
-||tiktok.com^
-||tiktokv.com^
-||tiktokcdn.com^
-||tiktokcdn-us.com^
-||musical.ly^
-||triller.co^
-||likee.video^
-||kwai.com^
